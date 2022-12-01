@@ -17,8 +17,8 @@ public class CurrentAccount extends Account {
         return value + ( value * COMMISSION );
     }
 
-    public boolean withdraw_amount( double value ) {
-        return super.withdraw_amount( apply_commission( value ) );
+    public void withdraw_amount( double value ) throws InsufficientBalanceException {
+        super.withdraw_amount( apply_commission( value ) );
     }
 
     @Override

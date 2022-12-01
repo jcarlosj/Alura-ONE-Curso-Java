@@ -21,8 +21,8 @@ public class SavingsAccount extends Account {
         return value;
     }
 
-    public boolean withdraw_amount( double value ) {
-        return super.withdraw_amount( apply_commission( value ) );
+    public void withdraw_amount( double value ) throws InsufficientBalanceException {
+        super.withdraw_amount( apply_commission( value ) );
     }
 
     @Override

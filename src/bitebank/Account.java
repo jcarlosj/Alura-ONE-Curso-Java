@@ -22,15 +22,13 @@ public abstract class Account {
 
     protected abstract double apply_commission( double value );
 
-    public boolean withdraw_amount( double value ) {
-        if( this.balance >= value ) {
-            this.balance -= value;
-            this.account_movements++;
-
-            return true;
+    public void withdraw_amount( double value ) throws InsufficientBalanceException {
+        if( this.balance < value ) {
+            throw new InsufficientBalanceException( "Insufficient Balance" );
         }
 
-        return false;
+        this.balance -= value;
+        this.account_movements++;
     }
 
     public boolean deposit_amount( double value ) {
@@ -44,7 +42,7 @@ public abstract class Account {
         return false;
     }
 
-    public boolean transfer_amount( double value, Account destination_account ) {
+    public boolean transfer_amount( double value, Account destination_account ) throws InsufficientBalanceException {
         if( this.balance >= value ) {
             this.withdraw_amount( value );
             destination_account.deposit_amount( value );

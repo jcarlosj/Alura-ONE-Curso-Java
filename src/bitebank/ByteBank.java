@@ -9,11 +9,16 @@ public class ByteBank {
         System.out.println( sofia_account );
         System.out.println( eva_account );
 
-        sofia_account.transfer_amount( 2000, eva_account );
-        eva_account.withdraw_amount( 500 );
-        eva_account.withdraw_amount( 50 );
-        eva_account.withdraw_amount( 50 );
-        eva_account.withdraw_amount( 50 );
+        // Solo un try/catch es quien realmente se hace cargo de manejar la Exception
+        try {
+            sofia_account.transfer_amount( 2000, eva_account );
+            eva_account.withdraw_amount( 500 );
+            eva_account.withdraw_amount( 2500 );        // -> Producirá InsufficientBalanceException, Excepción personalizada (Checked Exception)
+            eva_account.withdraw_amount( 50 );
+            eva_account.withdraw_amount( 50 );
+        } catch ( InsufficientBalanceException e ) {
+            e.printStackTrace();
+        }
 
         System.out.println( "Valores finales" );
         System.out.println( sofia_account );
