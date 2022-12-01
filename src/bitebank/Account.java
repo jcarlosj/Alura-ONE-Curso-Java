@@ -1,10 +1,11 @@
 package bitebank;
 
-public class Account {
+public abstract class Account {
     private String id;
     private String name_bank;
     private Client holder;
-    private double balance;
+    protected double balance;
+    protected int account_movements;
 
     Account( String name_bank, String owner_id, String owner_name, String owner_phone ) {
         this.id = String.valueOf( System.currentTimeMillis() );
@@ -12,9 +13,19 @@ public class Account {
         this.holder = new Client( owner_id, owner_name, owner_phone );
     }
 
+    Account( String name_bank, String owner_id, String owner_name, String owner_phone, double balance ) {
+        this.id = String.valueOf( System.currentTimeMillis() );
+        this.name_bank = name_bank;
+        this.holder = new Client( owner_id, owner_name, owner_phone );
+        this.balance = balance;
+    }
+
+    protected abstract double apply_commission( double value );
+
     public boolean withdraw_amount( double value ) {
         if( this.balance >= value ) {
             this.balance -= value;
+            this.account_movements++;
 
             return true;
         }
@@ -25,6 +36,7 @@ public class Account {
     public boolean deposit_amount( double value ) {
         if( value > 0 ) {
             this.balance += value;
+            this.account_movements++;
 
             return true;
         }
@@ -36,6 +48,7 @@ public class Account {
         if( this.balance >= value ) {
             this.withdraw_amount( value );
             destination_account.deposit_amount( value );
+            this.account_movements++;
 
             return true;
         }
@@ -50,6 +63,7 @@ public class Account {
                 ", name_bank='" + name_bank + '\'' +
                 ", holder=" + holder +
                 ", balance=" + balance +
+                ", account_movements=" + account_movements +
                 '}';
     }
 }
