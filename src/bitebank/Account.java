@@ -20,6 +20,10 @@ public abstract class Account {
         this.balance = balance;
     }
 
+    public Client getHolder() {
+        return holder;
+    }
+
     protected abstract double apply_commission( double value );
 
     public void withdraw_amount( double value ) throws InsufficientBalanceException {
