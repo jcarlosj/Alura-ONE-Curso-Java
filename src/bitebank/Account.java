@@ -1,5 +1,7 @@
 package bitebank;
 
+import java.util.Objects;
+
 public abstract class Account {
     private String id;
     private String name_bank;
@@ -67,5 +69,16 @@ public abstract class Account {
                 ", balance=" + balance +
                 ", account_movements=" + account_movements +
                 '}';
+    }
+
+    @Override
+    public boolean equals( Object o ) {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+
+        Account account = ( Account ) o;    // Casting: Object to Account
+
+        // Verifica que el valor de cada uno de los atributos de la clase sea el mismo
+        return Double.compare(account.balance, balance) == 0 && account_movements == account.account_movements && Objects.equals(id, account.id) && Objects.equals(name_bank, account.name_bank) && Objects.equals(holder, account.holder);
     }
 }

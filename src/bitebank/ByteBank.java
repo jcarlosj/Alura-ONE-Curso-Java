@@ -25,11 +25,9 @@ public class ByteBank {
             System.out.println( "La cuenta NO existe dentro de la lista" );
 
         // Verificamos si los objetos tienen los mismos valores dentro de si.
-        if( accountsList.get( 1 ).getHolder().getName() == milo_account.getHolder().getName() )
+        if( eva_account.equals( accountsList.get( 1 ) ) )
             System.out.println( "La cuentas poseen los mismos valores" );
         else
             System.out.println( "La cuentas NO poseen los mismos valores" );
-
-
     }
 }
