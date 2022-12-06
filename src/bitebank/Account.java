@@ -22,6 +22,8 @@ public abstract class Account {
         this.balance = balance;
     }
 
+    // Getters
+    public String getId() { return id; }
     public Client getHolder() {
         return holder;
     }
