@@ -25,10 +25,19 @@ public class ByteBank {
         }
         System.out.println();
 
-        Comparator<Account> comparator = new SortClientById();
-        accountsList.sort( comparator );
+        Comparator<Account> comparatorClientByID = new SortClientById();
+        accountsList.sort( comparatorClientByID );
 
         System.out.println( "Lista ordenada por ID de cliente" );
+        for( Account account : accountsList ) {
+            System.out.println( account );
+        }
+        System.out.println();
+
+        Comparator<Account> comparatorClientByName = new SortClientByName();
+        accountsList.sort( comparatorClientByName );
+
+        System.out.println( "Lista ordenada por nombre de cliente" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
