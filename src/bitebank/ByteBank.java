@@ -2,7 +2,6 @@ package bitebank;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class ByteBank {
     public static void main(String[] args) {
@@ -27,66 +26,53 @@ public class ByteBank {
         System.out.println();
 
         /* ORDENAMIENTO Java 8 o superior */
-        accountsList.sort( new Comparator<Account>() {      //  Se crea un objeto de tipo Comparator.
-            @Override
-            public int compare(Account account, Account t1) {
-                // FORMA 3 (Wrapper): Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
-                return Integer.compare(
-                        Integer.parseInt( account.getHolder().getId() ),
-                        Integer.parseInt( t1.getHolder().getId() )
-                );
-            }
-        });
+        accountsList.sort( ( Account account, Account t1 ) ->
+            // FORMA 3 (Wrapper): Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
+            // Cuando implementamos Lambdas NO necesitamos poner el return ni las llaves cuando tenemos una sola expresion
+            Integer.compare(
+                    Integer.parseInt( account.getHolder().getId() ),
+                    Integer.parseInt( t1.getHolder().getId() )
+            )
+        );
 
-        System.out.println( "Lista ordenada por ID de cliente (Java 8 o superior)" );
+        System.out.println( "Lista ordenada por ID de cliente (Java 8 o superior) usando Lambdas" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
         System.out.println();
 
-        accountsList.sort( new Comparator<Account>() {      //  Se crea un objeto de tipo Comparator.
-            @Override
-            public int compare( Account account, Account t1 ) {
-                // Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
-                return account.getHolder().getName().compareTo( t1.getHolder().getName() );
-            }
+        accountsList.sort( ( Account account, Account t1 ) -> {
+            // Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
+            return account.getHolder().getName().compareTo( t1.getHolder().getName() );
         });
 
-        System.out.println( "Lista ordenada por nombre de cliente (Java 8 o superior)" );
+        System.out.println( "Lista ordenada por nombre de cliente (Java 8 o superior) usando Lambdas" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
         System.out.println();
 
         /* ORDENAMIENTO Java 7 o inferior */
-        // new Comparator<Account>() {}: Instancia de una clase anonima que usa la interface 'Comparator'
-        Collections.sort( accountsList, new Comparator<Account>() {     //  Se crea un objeto de tipo Comparator.
-            @Override
-            public int compare( Account account, Account t1 ) {
-                // Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
-                return account.getHolder().getName().compareTo( t1.getHolder().getName() );
-            }
-        });
+        Collections.sort( accountsList, ( account, t1 ) ->
+            // Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
+            account.getHolder().getName().compareTo( t1.getHolder().getName() )
+        );
 
-        System.out.println( "Lista ordenada por nombre de cliente (Java 7 o inferior), instanciando de una clase anonima que usa la interface 'Comparator'" );
+        System.out.println( "Lista ordenada por nombre de cliente (Java 7 o inferior), usando Lambdas" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
         System.out.println();
 
-        // new Comparator<Account>() {}: Instancia de una clase anonima que usa la interface 'Comparator'
-        Collections.sort( accountsList, new Comparator<Account>() {     //  Se crea un objeto de tipo Comparator.
-            @Override
-            public int compare( Account account, Account t1 ) {
-                // FORMA 3 (Wrapper): Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
-                return Integer.compare(
-                        Integer.parseInt( account.getHolder().getId() ),
-                        Integer.parseInt( t1.getHolder().getId() )
-                );
-            }
-        });
+        Collections.sort( accountsList, ( account, t1 ) ->
+            // FORMA 3 (Wrapper): Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
+            Integer.compare(
+                    Integer.parseInt( account.getHolder().getId() ),
+                    Integer.parseInt( t1.getHolder().getId() )
+            )
+        );
 
-        System.out.println( "Lista ordenada por ID de cliente (Java 7 o inferior), instanciando de una clase anonima que usa la interface 'Comparator'" );
+        System.out.println( "Lista ordenada por ID de cliente (Java 7 o inferior), usando Lambdas" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
