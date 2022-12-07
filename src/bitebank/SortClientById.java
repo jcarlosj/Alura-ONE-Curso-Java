@@ -17,6 +17,12 @@ public class SortClientById implements Comparator<Account> {
         }*/
 
         // FORMA 2 (Corta): Retornará 0 (Cero): Si es igual, # (Un positivo): Si es mayor, -# (Un negativo): Si es menor
-        return Integer.parseInt( account.getHolder().getId() ) - Integer.parseInt( t1.getHolder().getId() );
+        /*return Integer.parseInt( account.getHolder().getId() ) - Integer.parseInt( t1.getHolder().getId() );*/
+
+        // FORMA 3 (Wrapper): Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
+        return Integer.compare(
+            Integer.parseInt( account.getHolder().getId() ),
+            Integer.parseInt( t1.getHolder().getId() )
+        );
     }
 }
