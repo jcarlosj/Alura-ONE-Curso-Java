@@ -2,7 +2,7 @@ package bitebank;
 
 import java.util.Comparator;
 
-class SortClientById implements Comparator<Account> {
+public class SortClientById implements Comparator<Account> {
     @Override
     public int compare( Account account, Account t1 ) {
         if( Integer.parseInt( account.getHolder().getId() ) == Integer.parseInt( t1.getHolder().getId() ) ) {
@@ -15,5 +15,4 @@ class SortClientById implements Comparator<Account> {
             return -1;
         }
     }
-
 }
