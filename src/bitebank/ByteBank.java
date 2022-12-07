@@ -1,6 +1,7 @@
 package bitebank;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class ByteBank {
@@ -25,10 +26,11 @@ public class ByteBank {
         }
         System.out.println();
 
+        /* ORDENAMIENTO Java 8 o superior */
         Comparator<Account> comparatorClientByID = new SortClientById();
         accountsList.sort( comparatorClientByID );
 
-        System.out.println( "Lista ordenada por ID de cliente" );
+        System.out.println( "Lista ordenada por ID de cliente (Java 8 o superior)" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
@@ -37,11 +39,21 @@ public class ByteBank {
         Comparator<Account> comparatorClientByName = new SortClientByName();
         accountsList.sort( comparatorClientByName );
 
-        System.out.println( "Lista ordenada por nombre de cliente" );
+        System.out.println( "Lista ordenada por nombre de cliente (Java 8 o superior)" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
         System.out.println();
+
+        /* ORDENAMIENTO Java 7 o inferior */
+        Collections.sort( accountsList, new SortClientByName() );
+
+        System.out.println( "Lista ordenada por Nombre de cliente (Java 7 o inferior)" );
+        for( Account account : accountsList ) {
+            System.out.println( account );
+        }
+        System.out.println();
+
 
         // Verificamos si la referencia esta contenida dentro de la lista.
         if( accountsList.contains( milo_account ) )
