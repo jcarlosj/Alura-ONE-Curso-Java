@@ -1,8 +1,9 @@
 package bitebank;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public abstract class Account {
+public abstract class Account implements Comparable<Account> {
     private String id;
     private String name_bank;
     private Client holder;
@@ -82,5 +83,13 @@ public abstract class Account {
 
         // Verifica que el valor de cada uno de los atributos de la clase sea el mismo
         return Double.compare(account.balance, balance) == 0 && account_movements == account.account_movements && Objects.equals(id, account.id) && Objects.equals(name_bank, account.name_bank) && Objects.equals(holder, account.holder);
+    }
+
+    @Override
+    public int compareTo( Account account ) {
+        // Orden Natural: Alfabetico ASC
+        // Retornará 0 (Cero): Si es igual, 1 (Uno): Si es mayor, -1 (Menos uno): Si es menor
+
+        return this.getHolder().getName().compareTo( account.getHolder().getName() );
     }
 }

@@ -46,9 +46,16 @@ public class ByteBank {
         System.out.println();
 
         /* ORDENAMIENTO Java 7 o inferior */
-        Collections.sort( accountsList, new SortClientByName() );
+        Collections.sort( accountsList );   // Ordenamiento 'Natural' (By Default)
 
-        System.out.println( "Lista ordenada por Nombre de cliente (Java 7 o inferior)" );
+        System.out.println( "Lista ordenada por nombre de cliente (Java 7 o inferior) implementando 'Interface Comparable'" );
+        for( Account account : accountsList ) {
+            System.out.println( account );
+        }
+        System.out.println();
+
+        Collections.sort( accountsList, new SortClientById() );
+        System.out.println( "Lista ordenada por ID de cliente (Java 7 o inferior)" );
         for( Account account : accountsList ) {
             System.out.println( account );
         }
