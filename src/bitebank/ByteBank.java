@@ -2,6 +2,7 @@ package bitebank;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.function.Consumer;
 
 public class ByteBank {
     public static void main(String[] args) {
@@ -20,9 +21,13 @@ public class ByteBank {
         accountsList.add( rex_account );
 
         System.out.println( "Lista sin ordenar" );
-        for( Account account : accountsList ) {
-            System.out.println( account );
-        }
+        // Iteracion usando un forEach de instancias de una clase anonima que implementa 'Interface Consumer' que nuestra cada una de las cuentas de la lista
+        accountsList.forEach( new Consumer<Account>() {
+            @Override
+            public void accept( Account account ) {
+                System.out.println( account );
+            }
+        });
         System.out.println();
 
         /* ORDENAMIENTO Java 8 o superior */
@@ -36,9 +41,13 @@ public class ByteBank {
         );
 
         System.out.println( "Lista ordenada por ID de cliente (Java 8 o superior) usando Lambdas" );
-        for( Account account : accountsList ) {
-            System.out.println( account );
-        }
+        // Iteracion usando un forEach de instancias de una clase anonima que implementa 'Interface Consumer' que nuestra cada una de las cuentas de la lista
+        accountsList.forEach( new Consumer<Account>() {
+            @Override
+            public void accept( Account account ) {
+                System.out.println( account );
+            }
+        });
         System.out.println();
 
         accountsList.sort( ( Account account, Account t1 ) -> {
@@ -47,9 +56,13 @@ public class ByteBank {
         });
 
         System.out.println( "Lista ordenada por nombre de cliente (Java 8 o superior) usando Lambdas" );
-        for( Account account : accountsList ) {
-            System.out.println( account );
-        }
+        // Iteracion usando un forEach de instancias de una clase anonima que implementa 'Interface Consumer' que nuestra cada una de las cuentas de la lista
+        accountsList.forEach( new Consumer<Account>() {
+            @Override
+            public void accept( Account account ) {
+                System.out.println( account );
+            }
+        });
         System.out.println();
 
         /* ORDENAMIENTO Java 7 o inferior */
@@ -59,9 +72,13 @@ public class ByteBank {
         );
 
         System.out.println( "Lista ordenada por nombre de cliente (Java 7 o inferior), usando Lambdas" );
-        for( Account account : accountsList ) {
-            System.out.println( account );
-        }
+        // Iteracion usando un forEach de instancias de una clase anonima que implementa 'Interface Consumer' que nuestra cada una de las cuentas de la lista
+        accountsList.forEach( new Consumer<Account>() {
+            @Override
+            public void accept( Account account ) {
+                System.out.println( account );
+            }
+        });
         System.out.println();
 
         Collections.sort( accountsList, ( account, t1 ) ->
@@ -73,9 +90,13 @@ public class ByteBank {
         );
 
         System.out.println( "Lista ordenada por ID de cliente (Java 7 o inferior), usando Lambdas" );
-        for( Account account : accountsList ) {
-            System.out.println( account );
-        }
+        // Iteracion usando un forEach de instancias de una clase anonima que implementa 'Interface Consumer' que nuestra cada una de las cuentas de la lista
+        accountsList.forEach( new Consumer<Account>() {
+            @Override
+            public void accept( Account account ) {
+                System.out.println( account );
+            }
+        });
         System.out.println();
 
 
