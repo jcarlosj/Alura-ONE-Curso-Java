@@ -31,7 +31,7 @@ public class Course implements Comparable<Course> {
 
     @Override
     public String toString() {
-        return "\n\t\tCourse{" +
+        return "Course{" +
             "name='" + name + '\'' +
             ", time=" + time +
         "}";
