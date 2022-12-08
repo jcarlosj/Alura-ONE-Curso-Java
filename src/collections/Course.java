@@ -2,7 +2,7 @@ package collections;
 
 import java.util.Random;
 
-public class Course {
+public class Course implements Comparable<Course> {
     private String name;
     private int time;
 
@@ -35,5 +35,10 @@ public class Course {
             "name='" + name + '\'' +
             ", time=" + time +
         '}';
+    }
+
+    @Override
+    public int compareTo( Course course ) {
+        return this.getName().compareTo( course.getName() );
     }
 }
