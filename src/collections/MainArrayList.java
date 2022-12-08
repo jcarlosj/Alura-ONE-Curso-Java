@@ -1,10 +1,46 @@
 package collections;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MainArrayList {
     public static void main(String[] args) {
         iterateArrayList();
+        sortArrayList();
+    }
+
+    public static void sortArrayList() {
+        ArrayList<String> nameList = new ArrayList<String>( Arrays.asList( "Paul", "David", "Lisa", "Alyssa", "Alex", "Ronald", "Todd", "Hope" ) );
+
+        System.out.println( "Lista original" );
+        System.out.println( "\t" + nameList );
+
+        // Usando clase 'Collections'
+        Collections.sort( nameList );
+        System.out.println( "Lista ordenada ASC usando clase 'Collections'" );
+        System.out.println( "\t" + nameList );
+
+        Collections.sort( nameList, Collections.reverseOrder() );
+        System.out.println( "Lista ordenada DESC usando clase 'Collections'" );
+        System.out.println( "\t" + nameList );
+
+        // Usando 'sort' y clase 'Comparator'
+        nameList.sort( Comparator.naturalOrder() );
+        System.out.println( "Lista ordenada ASC usando metodo 'sort' y clase 'Comparator'" );
+        System.out.println( "\t" + nameList );
+
+        nameList.sort( Comparator.reverseOrder() );
+        System.out.println( "Lista ordenada DESC usando metodo 'sort' y clase 'Comparator'" );
+        System.out.println( "\t" + nameList );
+
+        // Usando 'stream' y clase 'Collectors'
+        List<String> nameListAsc = nameList.stream().sorted().collect( Collectors.toList() );
+        System.out.println( "Lista ordenada ASC usando metodo 'stream' y clase 'Collectors'" );
+        System.out.println( "\t" + nameListAsc );
+
+        List<String> nameListDsc = nameList.stream().sorted( Collections.reverseOrder() ).collect( Collectors.toList() );
+        System.out.println( "Lista ordenada DSC usando metodo 'stream' y clase 'Collectors'" );
+        System.out.println( "\t" + nameListDsc );
     }
 
     public static void iterateArrayList () {
