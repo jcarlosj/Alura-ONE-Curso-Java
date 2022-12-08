@@ -17,7 +17,7 @@ public class Course implements Comparable<Course> {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName( String name ) {
         this.name = name;
     }
 
@@ -31,10 +31,10 @@ public class Course implements Comparable<Course> {
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "\n\t\tCourse{" +
             "name='" + name + '\'' +
             ", time=" + time +
-        '}';
+        "}";
     }
 
     @Override
