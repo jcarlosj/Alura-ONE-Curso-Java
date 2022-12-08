@@ -41,15 +41,15 @@ public class MainObjectLists {
 
         // FORMA 4: No requiere la implementacion de la Interface 'Comparator' en la clase 'Course'
         //          Esta implementacion usando 'stream' genera una nueva lista ordenada
-        System.out.println( "\n*** ORDENAR: usando metodo 'stream' y clase 'Comparator' ***" );
-        List<Course> orderByNameAsc = courseList.stream().sorted( Comparator.comparing( Course::getName ) ).collect( Collectors.toList() );
+        System.out.println( "\n*** ORDENAR: usando metodo 'stream' y clase 'Comparator',  excluyendo el curso con el nombre de 'React' usando el metodo 'filter' implementando Lambdas ***" );
+        List<Course> orderByNameAsc = courseList.stream().filter( course -> ! course.getName().equalsIgnoreCase( "React" ) ).sorted( Comparator.comparing( Course::getName ) ).collect( Collectors.toList() );
         System.out.println( "Lista ordenada ASC por nombre \t" + orderByNameAsc );
-        List<Course> orderByNameDsc = courseList.stream().sorted( Comparator.comparing( Course::getName ).reversed() ).collect( Collectors.toList() );
+        List<Course> orderByNameDsc = courseList.stream().filter( course -> ! course.getName().equalsIgnoreCase( "React" ) ).sorted( Comparator.comparing( Course::getName ).reversed() ).collect( Collectors.toList() );
         System.out.println( "Lista ordenada DSC por nombre \t" + orderByNameDsc );
 
-        List<Course> orderByTimeAsc = courseList.stream().sorted( Comparator.comparingInt( Course::getTime ) ).collect( Collectors.toList() );
+        List<Course> orderByTimeAsc = courseList.stream().filter( course -> ! course.getName().equalsIgnoreCase( "React" ) ).sorted( Comparator.comparingInt( Course::getTime ) ).collect( Collectors.toList() );
         System.out.println( "Lista ordenada ASC por tiempo \t" + orderByTimeAsc );
-        List<Course> orderByTimeDsc = courseList.stream().sorted( Comparator.comparingInt( Course::getTime ).reversed() ).collect( Collectors.toList() );
+        List<Course> orderByTimeDsc = courseList.stream().filter( course -> ! course.getName().equalsIgnoreCase( "React" ) ).sorted( Comparator.comparingInt( Course::getTime ).reversed() ).collect( Collectors.toList() );
         System.out.println( "Lista ordenada DSC por tiempo \t" + orderByTimeDsc );
     }
 }
