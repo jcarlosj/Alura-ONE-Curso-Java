@@ -37,26 +37,31 @@ public class MainListEncapsulated {
             finace_course_classrooms
         );
 
-        finace_course_classrooms.add( new Classroom( "5", "13" ) );     // INMUTABLE: Error al agregar un nuevo salon para la clase de Finanzas I
+        try{
+            finace_course_classrooms.add( new Classroom( "5", "13" ) );     // INMUTABLE: Error al agregar un nuevo salon para la clase de Finanzas I
 
-        System.out.println(
-            "Salones (Finanzas I) - ACTUALIZADO: Agregamos un nuevo salon donde se impartira esta clase (Salon 513)\n\t" +
-            finace_course_classrooms
-        );
-        System.out.println();
+            System.out.println(
+                    "Salones (Finanzas I) - ACTUALIZADO: Agregamos un nuevo salon donde se impartira esta clase (Salon 513)\n\t" +
+                    finace_course_classrooms
+            );
+            System.out.println();
 
 
-        ArrayList<Course> newClassroomList = new ArrayList<>();    // Creamos una nueva lista de cursos y
-        newClassroomList.add( finance_course );                    // Agregamos nuevo salon a partir de la Instancia Original
-        System.out.println(
-            "Creamos NUEVA LISTA de salones para Finanzas I (Instancia Original): \n\t" +
-            newClassroomList
-        );
+            ArrayList<Course> newClassroomList = new ArrayList<>();    // Creamos una nueva lista de cursos y
+            newClassroomList.add( finance_course );                    // Agregamos nuevo salon a partir de la Instancia Original
+            System.out.println(
+                    "Creamos NUEVA LISTA de salones para Finanzas I (Instancia Original): \n\t" +
+                    newClassroomList
+            );
 
-        System.out.println(
-            "Obtenemos NUEVA LISTA de salones para Finanzas I  (Instancia Original): \n\t" +
-            newClassroomList.get( 0 ).getClassroom()
-        );
+            System.out.println(
+                    "Obtenemos NUEVA LISTA de salones para Finanzas I  (Instancia Original): \n\t" +
+                    newClassroomList.get( 0 ).getClassroom()
+            );
+        } catch ( UnsupportedOperationException uoe ) {
+            System.out.println( "EXCEPTION: No agregue nuevos salones al listado de salones de clase, dicho listado es INMUTABLE" );
+            uoe.printStackTrace();
+        }
 
     }
 }
