@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -39,7 +40,7 @@ public class Course implements Comparable<Course> {
     }
 
     public List<Classroom> getClassroom() {
-        return classroom_list;
+        return Collections.unmodifiableList( classroom_list );
     }
 
     public void setClassroom( List<Classroom> classroom ) {

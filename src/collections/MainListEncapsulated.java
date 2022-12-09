@@ -28,8 +28,8 @@ public class MainListEncapsulated {
 
         System.out.println( "ESTADO INICIAL: Todos los cursos con todos sus salones: \n\t" + courses );
 
-        // MUTABLE
-        System.out.println( "\n*** MUTABLE ***" );
+        // INMUTABLE
+        System.out.println( "\n*** INMUTABLE ***" );
 
         List<Classroom> finace_course_classrooms = finance_course.getClassroom();       // Obtenemos los salones clase Finanzas I (usando su Getter)
         System.out.println(
@@ -37,7 +37,7 @@ public class MainListEncapsulated {
             finace_course_classrooms
         );
 
-        finace_course_classrooms.add( new Classroom( "5", "13" ) );     // Agregamos un nuevo salon para la clase de Finanzas I
+        finace_course_classrooms.add( new Classroom( "5", "13" ) );     // INMUTABLE: Error al agregar un nuevo salon para la clase de Finanzas I
 
         System.out.println(
             "Salones (Finanzas I) - ACTUALIZADO: Agregamos un nuevo salon donde se impartira esta clase (Salon 513)\n\t" +
