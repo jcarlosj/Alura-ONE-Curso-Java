@@ -1,5 +1,7 @@
 package collections;
 
+import java.util.Objects;
+
 public class Student {
     private String name;
     private String code;
@@ -23,5 +25,15 @@ public class Student {
             "name='" + name + '\'' +
             ", code='" + code + '\'' +
         '}';
+    }
+
+    @Override
+    public boolean equals( Object o ) {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+
+        Student student = ( Student ) o;
+
+        return name.equals( student.name ) && code.equals( student.code );
     }
 }

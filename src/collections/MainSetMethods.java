@@ -32,7 +32,7 @@ public class MainSetMethods {
         System.out.println( "Compara con otra instancia con los mismos datos \n  (usando 'contains')" );
         Student new_student = new Student( "Ana Maria", "54931" );      // -> Crea NUEVA instancia de Ana Maria
 
-        System.out.println( "  Iguales? " + student.equals( new_student ) + " - (original & nueva instancia)" );  // FALSE
+        System.out.println( "  Iguales? " + student.equals( new_student ) + " - (original & nueva instancia)" );  // TRUE
 
         if( students.contains( new_student ) )                                      // Compara instancia ORIGINAL e instancia NUEVA
             System.out.println( "\t" + new_student + " -> existe" );
@@ -42,7 +42,7 @@ public class MainSetMethods {
         // Valida si un objeto con otra instancia, pero los mismos datos, existe dentro del conjunto usando 'equals'
         System.out.println( "  (usando 'equals')" );
 
-        System.out.println( "  Iguales? " + student.equals( new_student ) + " - (original & nueva instancia)" );  // FALSE
+        System.out.println( "  Iguales? " + student.equals( new_student ) + " - (original & nueva instancia)" );  // TRUE
 
         if( students.equals( new_student ) )                                        // Compara instancia ORIGINAL e instancia NUEVA
             System.out.println( "\t" + new_student + " -> existe" );
