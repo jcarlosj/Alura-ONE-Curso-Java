@@ -1,14 +1,12 @@
 package collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Course implements Comparable<Course> {
     private String name;
     private int time;
     private List<Classroom> classroom_list = new ArrayList<>();
+    private Collection<Student> students_list = new HashSet<>();
 
     // Constructor
     public Course( String name, int time ) {
@@ -47,9 +45,25 @@ public class Course implements Comparable<Course> {
         this.classroom_list = classroom;
     }
 
+    public Collection<Student> getStudentsList() {
+        return students_list;
+    }
+
+    public void setStudentsList( Collection<Student> students_list ) {
+        this.students_list = students_list;
+    }
+
     // Methods
     public void addClassroom( Classroom classroom ) {
         this.classroom_list.add( classroom );
+    }
+
+    public void addStudent( Student student ) {
+        this.students_list.add( student );
+    }
+
+    public boolean studentExists( Student student ) {
+        return this.students_list.contains( student );
     }
 
     @Override
@@ -58,6 +72,7 @@ public class Course implements Comparable<Course> {
             "name='" + name + '\'' +
             ", time=" + time +
             ", classroom_list=" + classroom_list +
+            ", students_list=" + students_list +
         '}';
     }
 

@@ -19,12 +19,46 @@ public class MainSetMethods {
         students.add( student );
         students.add( new Student( "Juan Carlos", "87634" ) );
 
-        System.out.println( students );
+//        System.out.println( students );
 
-        example1( students, student );
+//        example1( students, student );
+        example2( students );
+    }
+
+    public static void example2( Collection students ) {
+        Course angular_course = new Course( "Angular Basico", 50 );
+
+        for( Object student : students ) {
+            angular_course.addStudent( ( Student ) student );
+        }
+
+        System.out.println( angular_course );
+
+        Student new_student = new Student( "Ana Maria", "54931" );
+
+        // Hacemos las respectivas comparaciones usando 'contains' e 'equals'
+        System.out.println( "  Contains? " + angular_course.getStudentsList().contains( new_student ) + " - (original & nueva instancia)" );  // TRUE
+        System.out.println( "  studentExist? " + angular_course.studentExists( new_student ) + " - (original & nueva instancia)" );  // TRUE
+
+        if( angular_course.studentExists( new_student ) )      // Compara instancia ORIGINAL e instancia NUEVA (sin hashCode: FALSE, con hashCode: TRUE)
+            System.out.println( "\t" + new_student + " -> existe" );
+        else
+            System.out.println( "\t" + new_student + " -> NO existe" );
+
+        // Valida si un objeto con otra instancia, pero los mismos datos, existe dentro del conjunto usando 'equals'
+        System.out.println( "  (usando 'equals')" );
+
+        System.out.println( "  Equals? " + angular_course.getStudentsList().equals( new_student ) + " - (original & nueva instancia)" );  // TRUE
+
+        if( angular_course.getStudentsList().equals( new_student ) )        // Compara instancia ORIGINAL e instancia NUEVA (sin hashCode: FALSE, con hashCode: FALSE)
+            System.out.println( "\t" + new_student + " -> existe" );
+        else
+            System.out.println( "\t" + new_student + " -> NO existe" );
+
     }
 
     public static void example1( Collection students, Student student ) {
+
         // Valida si un objeto con la misma instancia existe dentro del conjunto
         System.out.println( "Compara con la misma instancia" );
         if( students.contains( student ) )
