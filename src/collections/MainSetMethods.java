@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashSet;
 
 public class MainSetMethods {
@@ -22,7 +23,24 @@ public class MainSetMethods {
 //        System.out.println( students );
 
 //        example1( students, student );
-        example2( students );
+//        example2( students );
+        example3( students );
+    }
+
+    public static void example3( Collection students ) {
+        Course vue_course = new Course( "Vue Basico", 35 );
+
+        for( Object student : students ) {
+            vue_course.addStudent( ( Student ) student );
+        }
+
+        System.out.println( vue_course );
+
+        // Imprime el código de los alumnos en forma descendente.
+        System.out.println( "Imprime el código de los alumnos en forma descendente." );
+        vue_course.getStudentsList().stream()
+                .sorted( Comparator.comparing( Student::getCode ).reversed() )
+                .forEach( student -> System.out.println( "\t> " + student.getCode() + " - " + student.getName() ) );
     }
 
     public static void example2( Collection students ) {
