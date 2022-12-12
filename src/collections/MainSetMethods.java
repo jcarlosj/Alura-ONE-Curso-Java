@@ -34,7 +34,7 @@ public class MainSetMethods {
 
         System.out.println( "  Iguales? " + student.equals( new_student ) + " - (original & nueva instancia)" );  // TRUE
 
-        if( students.contains( new_student ) )                                      // Compara instancia ORIGINAL e instancia NUEVA
+        if( students.contains( new_student ) )      // Compara instancia ORIGINAL e instancia NUEVA (sin hashCode: FALSE, con hashCode: TRUE)
             System.out.println( "\t" + new_student + " -> existe" );
         else
             System.out.println( "\t" + new_student + " -> NO existe" );
@@ -44,7 +44,7 @@ public class MainSetMethods {
 
         System.out.println( "  Iguales? " + student.equals( new_student ) + " - (original & nueva instancia)" );  // TRUE
 
-        if( students.equals( new_student ) )                                        // Compara instancia ORIGINAL e instancia NUEVA
+        if( students.equals( new_student ) )        // Compara instancia ORIGINAL e instancia NUEVA (sin hashCode: FALSE, con hashCode: FALSE)
             System.out.println( "\t" + new_student + " -> existe" );
         else
             System.out.println( "\t" + new_student + " -> NO existe" );

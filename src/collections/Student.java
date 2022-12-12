@@ -36,4 +36,10 @@ public class Student {
 
         return name.equals( student.name ) && code.equals( student.code );
     }
+
+    @Override
+    public int hashCode() {
+        // Afectara a los metodos 'contains' en principio daban FALSE, ahora TRUE
+        return Objects.hash( name, code );      // Al comparar los hash de cada atributo del elemento se esta validando su contenido sin importar si son la misma instancia
+    }
 }
