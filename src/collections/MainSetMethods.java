@@ -21,6 +21,10 @@ public class MainSetMethods {
 
         System.out.println( students );
 
+        example1( students, student );
+    }
+
+    public static void example1( Collection students, Student student ) {
         // Valida si un objeto con la misma instancia existe dentro del conjunto
         System.out.println( "Compara con la misma instancia" );
         if( students.contains( student ) )
