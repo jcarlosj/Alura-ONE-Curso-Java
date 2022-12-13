@@ -7,6 +7,7 @@ public class Course implements Comparable<Course> {
     private int time;
     private List<Classroom> classroom_list = new ArrayList<>();
     private Collection<Student> students_list = new HashSet<>();
+    private Map<String, Student> students_map = new HashMap<>();
 
     // Constructor
     public Course( String name, int time ) {
@@ -53,6 +54,10 @@ public class Course implements Comparable<Course> {
         this.students_list = students_list;
     }
 
+    public Map<String, Student> getStudentsMap() {
+        return students_map;
+    }
+
     // Methods
     public void addClassroom( Classroom classroom ) {
         this.classroom_list.add( classroom );
@@ -60,6 +65,7 @@ public class Course implements Comparable<Course> {
 
     public void addStudent( Student student ) {
         this.students_list.add( student );
+        this.students_map.put( student.getCode(), student );
     }
 
     public boolean studentExists( Student student ) {
