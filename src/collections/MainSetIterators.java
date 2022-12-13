@@ -3,6 +3,7 @@ package collections;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MainSetIterators {
     // TODO: https://docs.oracle.com/javase/tutorial/collections/interfaces/index.html
@@ -36,6 +37,14 @@ public class MainSetIterators {
         System.out.println( "Listado alumnos curso de Python (Iterator)" );
         while ( studentsIterator.hasNext() ) {
             System.out.println( "\t> " + studentsIterator.next() );
+        }
+
+        // El iterador definido queda en la ultima posicion una ves iterado, por lo que si le indicamos avanzar
+        // el valor será nulo, entonces debemos controlar la excepción que lanzaría en caso de hacerlo
+        try {
+            studentsIterator.next();
+        } catch ( NoSuchElementException e ){
+            System.out.println( "No Existen más alumnos en la lista" );
         }
 
     }
